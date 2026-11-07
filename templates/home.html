@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard & Home - Enterprise App{% endblock %}
+
+{% block content %}
+<div class="text-center max-w-2xl">
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl mb-4">
+        Production-Ready Django Boilerplate
+    </h1>
+    <p class="text-lg text-gray-600 mb-8">
+        Featuring Custom User UUIDs, Django-Allauth OAuth 2.0 (Google/GitHub), Environment Configs, and Tailwind CSS.
+    </p>
+
+    {% if user.is_authenticated %}
+        <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800">Welcome Back, {{ user.email }}!</h2>
+            <p class="text-sm text-gray-500 mt-1">User ID: <code class="bg-gray-100 px-2 py-1 rounded text-xs text-indigo-600 font-mono">{{ user.id }}</code></p>
+        </div>
+    {% else %}
+        <div class="flex justify-center space-x-4">
+            <a href="{% url 'account_signup' %}" class="px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition">Get Started</a>
+            <a href="{% url 'account_login' %}" class="px-6 py-3 bg-white text-gray-700 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition">Sign In</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
