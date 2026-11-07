@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Connect {{ provider.name }} - Enterprise App{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-md bg-white p-8 rounded-xl shadow-md border border-gray-100 text-center">
+    <div class="mb-6">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 text-indigo-600 mb-4">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+            </svg>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-900">Sign in with {{ provider.name }}</h2>
+        <p class="text-sm text-gray-500 mt-2">
+            You are about to sign in using your <strong>{{ provider.name }}</strong> account.
+        </p>
+    </div>
+
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <button type="submit" class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">
+            Continue to {{ provider.name }}
+        </button>
+    </form>
+
+    <p class="mt-6 text-xs text-gray-500">
+        Changed your mind? 
+        <a href="{% url 'account_login' %}" class="text-indigo-600 hover:underline font-medium">Back to Sign In</a>
+    </p>
+</div>
+{% endblock %}
