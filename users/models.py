@@ -1,11 +1,12 @@
 import uuid
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
 class User(AbstractUser):
     """
-    Custom user model utilizing UUIDs as primary keys for security and 
+    Custom user model utilizing UUIDs as primary keys for security and
     scaling across distributed databases.
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
