@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Complete Registration - Enterprise App{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-md bg-white p-8 rounded-xl shadow-md border border-gray-100">
+    <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">Almost there!</h2>
+        <p class="text-sm text-gray-500 mt-1">
+            You are signing in with <strong>{{ account.provider.name }}</strong>. Please confirm your details below.
+        </p>
+    </div>
+
+    <form method="post" action="{% url 'socialaccount_signup' %}" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">
+            Complete Sign Up
+        </button>
+    </form>
+</div>
+{% endblock %}
